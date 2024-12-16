@@ -1,0 +1,14 @@
+{{template "base" .}}
+
+{{define "title"}}Upload File{{end}}
+
+{{define "main"}}
+<form enctype="multipart/form-data" action="/user/upload" method="POST" novalidate>
+    <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+    <div class="upload-file">
+        <input type="file" class="input-file" multiple="true" name="uploadfile">
+        <span class="tip">Click to Choose</span>
+    </div>
+        <input type='submit' value='Upload'>
+</form>
+{{end}}

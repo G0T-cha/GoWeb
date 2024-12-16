@@ -1,0 +1,41 @@
+{{template "base" .}}
+
+{{define "title"}}Profile{{end}}
+
+{{define "main"}}
+    <h2>User Profile</h2>
+    {{with .User}}
+        <table>
+            <tr>
+                <th>Email</th>
+                <td>{{.Email}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{.Name}}</td>
+            </tr>
+            <tr>
+                <th>Joined</th>
+                <td>{{.Created}}</td>
+            </tr>
+            <tr>
+                <th>Pic</th>
+                <td>
+                    <form action="/delete" method="POST" style="display: inline;">
+                        <input type="hidden" name="file_path" value="/static/upload/{{.ID}}.png">
+                        <button type="submit" style="margin-right: 10px;">Delete</button>
+                    </form>
+                    <img src="/static/upload/{{.ID}}.png" style="width: 100px; height: 100px; border-radius: 50%;">
+                </td>
+            </tr>
+            <tr>
+                <th>Upload Pic</th>
+                <td><a href='/user/change-password'>Upload</a></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><a href='/user/change-password'>Change Password</a></td>
+            </tr>
+        </table>
+    {{end}}
+{{end}}
